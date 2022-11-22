@@ -16,18 +16,18 @@ function executor(resolve) {
     }, 1000);
 }
 
-p1.then((value) => {
+// We don't need to create a new symbol pChain. I just put it here to show that pChain is a different promise than p1 and p2
+const pChain = p1.then((value) => {
     console.log("p1", value);
     const p2 = new Promise(executor); // the second promise in the chain
-    return p2;
-}).then((value) => {
+    return p2; // Here, we are resolving pChain to p2 (see 5-resolving-a-promise-to-another-promise.js)
+});
+
+pChain.then((value) => {
     console.log("p2", value);
 });
 
-// Note that in a real application, the executor of p2 would typically be a different function -- ** not the same as the executor of p1 **
-// The executor of p2 would typically use/incorporate the value ** obtained from p1 **, such as a user ID or a file name
-
-// When using chaining, DO NOT FORGET to return the promise like we did on line 22 (return p2;)
+// When using chaining, DO NOT FORGET to return the promise like we did on line 23 (return p2;) or else the next promise in the chain will never settle
 
 // *AVOID* nesting promises because it can make the code difficult to read
 // Example of nesting promises (not recommended)
