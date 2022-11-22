@@ -6,6 +6,7 @@ const Promise = require("bluebird");
 
 // The Promise constructor takes a function as an argument
 // This function is called the "executor" function
+
 const p = new Promise(executor);
 
 // The executor function is parameterized with a function called "resolve"
