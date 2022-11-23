@@ -11,21 +11,22 @@
 const p1 = new Promise(executor); // the first promise in the chain
 
 function executor(resolve) {
-    setTimeout(() => {
-        resolve("I am fulfilled " + new Date().toISOString());
-    }, 1000);
+  setTimeout(() => {
+    resolve("I am fulfilled " + new Date().toISOString());
+  }, 1000);
 }
 
 // We don't need to create a new symbol pChain. I just put it here to show that pChain is a different promise than p1 and p2
-const pChain = p1.then((value) => {
-    console.log("p1", value);
-    const p2 = new Promise(executor); // the second promise in the chain
-    return p2; // Here, we are resolving pChain to p2 (see 5-resolving-a-promise-to-another-promise.js)
-});
-
-pChain.then((value) => {
-    console.log("p2", value);
-});
+p1.then((data) => {
+  console.log("p1", data);
+  return new Promise(executor);
+  // Here, we are resolving pChain to p2 (see 5-resolving-a-promise-to-another-promise.js)
+})
+  .then((data) => {
+    console.log("p2", data);
+    return "You absolutely could";
+  })
+  .then((data) => console.log(data));
 
 // When using chaining, DO NOT FORGET to return the promise like we did on line 23 (return p2;) or else the next promise in the chain will never settle
 

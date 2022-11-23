@@ -17,3 +17,11 @@ function getUserProfile() {
 }
 
 // Note that across all code paths, the return value of getUserProfile() is always promise. This is important for consistency and to avoid bugs
+
+Promise.reject("User is not signed in")
+    .then(() => {
+        console.log("a'");
+    })
+    .catch(() => {
+        console.log("b");
+    });

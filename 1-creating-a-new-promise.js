@@ -11,8 +11,8 @@ const p = new Promise(executor);
 
 // The executor function is parameterized with a function called "resolve"
 function executor(resolve) {
-    // The resolve function is called when the promise is fulfilled
-    resolve();
+  // The resolve function is called when the promise is fulfilled
+  resolve();
 }
 
 // If you don't call resolve, the promise will never be fulfilled

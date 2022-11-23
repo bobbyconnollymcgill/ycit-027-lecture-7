@@ -8,8 +8,8 @@ const Promise = require("bluebird");
 const p = new Promise(executor);
 
 function executor(resolve, reject) {
-    // Reject the promise
-    reject("Something terrible happened");
+  // Reject the promise
+  reject("Something terrible happened");
 }
 
 // If you don't call resolve or reject, the promise will never be fulfilled or rejected

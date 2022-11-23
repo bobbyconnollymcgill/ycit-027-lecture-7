@@ -10,8 +10,8 @@ const Promise = require("bluebird");
 const p = new Promise(executor);
 
 function executor(resolve, reject) {
-    resolve("I am fulfilled");
-    reject("Something terrible happened");
+  //   reject("Something terrible happened"); // This is ignored
+  //   resolve("I am fulfilled");
 }
 
 console.log("isPending", p.isPending());

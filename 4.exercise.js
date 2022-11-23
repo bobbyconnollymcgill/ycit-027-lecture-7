@@ -3,6 +3,16 @@
  *
  * Pass in the strings "Success" and "Failure" as the resolve and reject values
  *
- * Call that promise's then() and catch() methods to log the result
+ * Call that promise's then() method to log the result
  *
  */
+
+new Promise((resolve, reject) => {
+  if (true) {
+    resolve("Success"); // dead-code
+  } else {
+    reject("Failure");
+  }
+}).then((result) => {
+  console.log(result);
+});

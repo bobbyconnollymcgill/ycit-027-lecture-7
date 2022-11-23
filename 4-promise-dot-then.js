@@ -7,14 +7,16 @@
 const p = new Promise(executor);
 
 function executor(resolve) {
-    setTimeout(() => {
-        resolve("I am fulfilled " + new Date().toISOString());
-    }, 1000);
+  setTimeout(() => {
+    const msg = "I am fulfilled " + new Date().toISOString();
+    console.log(msg);
+    resolve(msg);
+  }, 1000);
 }
 
 p.then((value) => {
-    // Code that runs after the promise is fulfilled
-    console.log("p", value);
+  // Code that runs after the promise is fulfilled
+  console.log("p", value);
 });
 
 // Code that runs before the promise is fulfilled

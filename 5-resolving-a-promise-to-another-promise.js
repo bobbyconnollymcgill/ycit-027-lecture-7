@@ -11,11 +11,11 @@ const p2 = new Promise(executor2); // inner promise
 const p1 = new Promise(executor1); // outer promise
 
 function executor1(resolve, reject) {
-    resolve(p2);
+  resolve(p2);
 }
 
 function executor2(resolve, reject) {
-    resolve("I am fulfilled");
+  // resolve("I am fulfilled");
 }
 
 console.log("isPending", p1.isPending(), p2.isPending());

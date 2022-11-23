@@ -19,9 +19,25 @@ p.then((value) => {
 // This is useful when a function has multiple return statements and you want to ensure that the return value is always a promise
 
 function getUserId() {
-    return Promise.resolve(uuid());
+    if (notSignedIn) {
+        return Promise.resolve(uuid());
+    } else {
+        return fetch("https://sdkfhs.com/", { body: token });
+    }
 }
 
 getUserId().then((value) => {
     console.log("getUserId", value);
 });
+
+var today = "monday";
+
+function getString() {
+    if (today == "monday") {
+        return "0";
+    }
+
+    return "bla";
+}
+
+console.log(getString().substring(0, 2));
